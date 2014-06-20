@@ -13,7 +13,29 @@
 #include <aJSON.h>
 #include <SDFirmware.h>
 
+
+// create a static declaration at the top of the page
+AnalogOut out1;
+
+// ^
+// this line renders this error:
+
+// Arduino: 1.5.6-r2 (Mac OS X), Board: "Arduino Due (Programming Port)"
+
+// RythmicPatternsNW2S:18: error: no matching function for call to 'nw2s::AnalogOut::AnalogOut()'
+// /Users/Datorn/Documents/Arduino/b-master/sketches/libraries/nw2s/IO.h:4253: note: candidates are: nw2s::AnalogOut::AnalogOut(nw2s::PinAnalogOut)
+// /Users/Datorn/Documents/Arduino/b-master/sketches/libraries/nw2s/IO.h:4244: note:                 nw2s::AnalogOut::AnalogOut(const nw2s::AnalogOut&)
+// RythmicPatternsNW2S.ino: In function 'void setup()':
+// RythmicPatternsNW2S:87: error: no match for 'operator=' in 'out1 = nw2s::AnalogOut::create((nw2s::PinAnalogOut)1015)'
+// /Users/Datorn/Documents/Arduino/b-master/sketches/libraries/nw2s/IO.h:4244: note: candidates are: nw2s::AnalogOut& nw2s::AnalogOut::operator=(const nw2s::AnalogOut&)
+
+//   This report would have more information with
+//   "Show verbose output during compilation"
+//   enabled in File > Preferences.
+
+
 using namespace nw2s;
+
 
 // drums [z][y][x]
 int const noOfDrumPrograms = 2;
@@ -78,6 +100,8 @@ int column = 0;
 void setup() 
 {
 	Serial.begin(19200);
+
+  out1 = AnalogOut::create(DUE_SPI_4822_01);
 	
 	EventManager::initialize();
 	
@@ -90,8 +114,34 @@ void setup()
 	}
 }
 
+////////////////////////////////////////////////////////
+
 void loop() 
 {
+
+
+
+// Regarding the analog outputs:
+
+// Arduino's analogWrite doesn't work on the CV outputs as they are a 
+// little more complicated. The DACs are not native devices like the PWM pins, but are peripherals on the SPI bus.
+
+// So it takes a couple of commands to set an output up before you can write values to it:
+
+// create a static declaration at the top of the page
+// AnalogOut out1;
+
+// set up the output in setup()
+// out1 = AnalogOut::create(DUE_SPI_4822_01);
+
+// in loop() do your writing of values. outputCV uses millivolts
+// out1.outputCV(1000);
+// out1.outputCV(5000);
+// out1.outputCV(-1000);
+
+  out1.outputCV(1000);
+
+
 	if (EventManager::getT() >= nexttime) 
   	{
 		/* Crude tempo based on an analog input */
