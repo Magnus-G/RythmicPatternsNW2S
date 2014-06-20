@@ -15,7 +15,8 @@
 
 
 // create a static declaration at the top of the page
-AnalogOut out1;
+AnalogOut* out1 = AnalogOut::create(DUE_SPI_4822_00);
+AnalogOut* out2 = AnalogOut::create(DUE_SPI_4822_01);
 
 // ^
 // this line renders this error:
@@ -100,8 +101,6 @@ int column = 0;
 void setup() 
 {
 	Serial.begin(19200);
-
-  out1 = AnalogOut::create(DUE_SPI_4822_01);
 	
 	EventManager::initialize();
 	
@@ -139,7 +138,8 @@ void loop()
 // out1.outputCV(5000);
 // out1.outputCV(-1000);
 
-  out1.outputCV(1000);
+  out1->outputCV(1000);
+  out2->outputCV(2000);
 
 
 	if (EventManager::getT() >= nexttime) 
