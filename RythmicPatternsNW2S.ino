@@ -17,6 +17,8 @@
 // create a static declaration at the top of the page
 AnalogOut* out1;
 AnalogOut* out2;
+AnalogOut* out3;
+AnalogOut* out4;
 
 // ^
 // this line renders this error:
@@ -69,6 +71,7 @@ const PinAnalogIn INPUT_TEMPO = DUE_IN_A00;
 const PinAnalogIn INPUT_PROGRAM = DUE_IN_A01;
 const PinAnalogIn INPUT_SUBTRACT = DUE_IN_A02;
 const PinAnalogIn INPUT_ADD = DUE_IN_A03;
+const PinAnalogIn INPUT_NOTE = DUE_IN_A04;
 
 /* Ardcore sketch used integers, so we'll use an array instead */
 PinDigitalOut outputs[noOfDrumOutputs] = 
@@ -101,8 +104,10 @@ int column = 0;
 void setup() 
 {
 	Serial.begin(19200);
-  out1 = AnalogOut::create(DUE_SPI_4822_01);
-  out2 = AnalogOut::create(DUE_SPI_4822_02);
+  out1 = AnalogOut::create(DUE_SPI_4822_00);
+  out2 = AnalogOut::create(DUE_SPI_4822_01);
+  out3 = AnalogOut::create(DUE_SPI_4822_02);
+  out4 = AnalogOut::create(DUE_SPI_4822_03);
 	
 	EventManager::initialize();
 	
@@ -119,13 +124,16 @@ void setup()
 
 void loop() {
 
-  out1->outputCV(1000);
-  out2->outputCV(2000);
-
 	if (EventManager::getT() >= nexttime) {
     nexttime += 100 + ((5000 - analogReadmV(INPUT_TEMPO, 0, 5000)) / 20);		
 						
     int drumProgram = (noOfDrumPrograms > 1) ? (analogReadmV(INPUT_PROGRAM, 0, 4900) / (5000 / noOfDrumPrograms)) : 0; 
+    int noteOut = analogReadmV(INPUT_NOTE);
+
+    out1->outputCV(100 * noteOut);
+    out2->outputCV(200 * noteOut);
+    out3->outputCV(300 * noteOut);
+    out4->outputCV(400 * noteOut);
 
 		column = (column + 1) % 16;
 
