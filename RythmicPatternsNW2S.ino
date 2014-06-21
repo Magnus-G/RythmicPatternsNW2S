@@ -117,97 +117,47 @@ void setup()
 
 ////////////////////////////////////////////////////////
 
-void loop() 
-{
-
-
-
-// Regarding the analog outputs:
-
-// Arduino's analogWrite doesn't work on the CV outputs as they are a 
-// little more complicated. The DACs are not native devices like the PWM pins, but are peripherals on the SPI bus.
-
-// So it takes a couple of commands to set an output up before you can write values to it:
-
-// create a static declaration at the top of the page
-// AnalogOut out1;
-
-// set up the output in setup()
-// out1 = AnalogOut::create(DUE_SPI_4822_01);
-
-// in loop() do your writing of values. outputCV uses millivolts
-// out1.outputCV(1000);
-// out1.outputCV(5000);
-// out1.outputCV(-1000);
+void loop() {
 
   out1->outputCV(1000);
   out2->outputCV(2000);
 
-
-	if (EventManager::getT() >= nexttime) 
-  	{
-		/* Crude tempo based on an analog input */
-		/* 333ms = 60BPM (slowest) to 100ms = 200BPM (fastest) */
-    	nexttime += 100 + ((5000 - analogReadmV(INPUT_TEMPO, 0, 5000)) / 20);		
+	if (EventManager::getT() >= nexttime) {
+    nexttime += 100 + ((5000 - analogReadmV(INPUT_TEMPO, 0, 5000)) / 20);		
 						
-		/* Program Selection. Here it's once per beat */					
-     	int drumProgram = (noOfDrumPrograms > 1) ? (analogReadmV(INPUT_PROGRAM, 0, 4900) / (5000 / noOfDrumPrograms)) : 0; 
+    int drumProgram = (noOfDrumPrograms > 1) ? (analogReadmV(INPUT_PROGRAM, 0, 4900) / (5000 / noOfDrumPrograms)) : 0; 
 
-
-		/* Instead of looping, just keep the current column as a state */
 		column = (column + 1) % 16;
 
-		/* temporal. start with first beat point... */
-  	  	for (int row = 0; row < noOfDrumSteps; row++) 
-  	  	{ 
-			/* vertical, outputs. start with output 0... */
+  	for (int row = 0; row < noOfDrumSteps; row++) { 
 
-    		/* will the program run for this column? */
-    		randValueSubtract = Entropy::getValue(0, 5000);
+  		randValueSubtract = Entropy::getValue(0, 5000);
+  		if (randValueSubtract > analogReadmV(INPUT_SUBTRACT, 0, 5000)) {
 
-    		if (randValueSubtract > analogReadmV(INPUT_SUBTRACT, 0, 5000)) 
-			{            
-				/* the hit */
-				if (drums[drumProgram][row][column] == 1) 
-				{
+				if (drums[drumProgram][row][column] == 1) {
 					digitalWrite(outputs[row], HIGH);
 				}
 
-      		  	/* the 1 or 0 from the pattern is added to isThisATrigger */
-				/* give isThisATrigger a 1 or 0 depending on hit or not */
-      		  	isThisATrigger[row] = drums[drumProgram][row][column]; 
+        isThisATrigger[row] = drums[drumProgram][row][column]; 
 
-      		  	/* a 1 is added to isThisATrigger anyway... maybe */
-      		  	randValueAdd = Entropy::getValue(0, 5000);
+      	randValueAdd = Entropy::getValue(0, 5000);
 
-      		  	if (randValueAdd < analogReadmV(INPUT_ADD, 0, 5000))
-	  		  	{
+      	if (randValueAdd < analogReadmV(INPUT_ADD, 0, 5000)) {
 					digitalWrite(outputs[row], HIGH);
 					isThisATrigger[row] = 1;
-      		  	}
+      	}
       
-				/* check if gate should be turned off or kept open */
-      		  	if (isThisATrigger[row] == 1) 
-	  		  	{ 
-		  			/* if this is a hit */
-          		  	if (anslagEveryOther[row] == 1)
-					{ 
-						/* if the indicator variable shows 1 */
+      	if (isThisATrigger[row] == 1) { 
+          if (anslagEveryOther[row] == 1) { 
 						gates[row]->reset();
-          			  	
-						/* indicator value set to 0 to indicate that the last hit turned gate off... 
-						   so next one should keep it on and not go through this loop */							
 						anslagEveryOther[row] = 0; 
-        			}
-        			else 
-					{
-						/* so that next time there will be a turning off */
-          				anslagEveryOther[row] = 1;  
-        			}
-      			}         
-		  	}
-  		}
-	}
-
+        	}
+          else {
+            anslagEveryOther[row] = 1;  
+          }
+      	} // gate check
+	    } // subtract
+		} // row
+	} // column
 	EventManager::loop();
 }
