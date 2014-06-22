@@ -21,7 +21,7 @@ using namespace nw2s;
 
 ////////////////////////////////////////////////////////////////////////
 
-NoteSequencer* sequencer;
+CVNoteSequencer* sequencer;
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -136,11 +136,11 @@ void loop() {
     
     if (setting > 2000) 
     {
-      sequencer->setKey(E);
+      // sequencer->setKey(E);
     }
     else
     {
-      sequencer->setKey(C);
+      // sequencer->setKey(C);
     }
   }
   
