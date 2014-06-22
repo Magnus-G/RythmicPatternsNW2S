@@ -21,7 +21,7 @@ using namespace nw2s;
 
 ////////////////////////////////////////////////////////////////////////
 
-NoteSequencer* sequencer;
+CVNoteSequencer* sequencer;
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -105,8 +105,10 @@ void setup()
 
   NoteSequenceData* notes = new NoteSequenceData(notelist, notelist + 34);
 
-  sequencer = NoteSequencer::create(notes, C, Key::SCALE_MAJOR, DIV_EIGHTH, DUE_SPI_4822_15);
- 
+  // CVNoteSequencer(notes, key, scale, output, input, randomize);
+  sequencer = CVNoteSequencer::create(notes, C, Key::SCALE_MINOR, DUE_SPI_4822_02, DUE_IN_A10);
+
+
   sequencer->setgate(Gate::create(DUE_OUT_D15, 75));
  
   democlock->registerDevice(sequencer);
@@ -134,11 +136,11 @@ void loop() {
     
     if (setting > 2000) 
     {
-      sequencer->setKey(E);
+      // sequencer->setKey(E);
     }
     else
     {
-      sequencer->setKey(C);
+      // sequencer->setKey(C);
     }
   }
   
