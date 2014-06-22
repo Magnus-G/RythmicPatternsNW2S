@@ -22,7 +22,7 @@ using namespace nw2s;
 
 ////////////////////////////////////////////////////////////////////////
 
-CVNoteSequencer* sequencer;
+
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -51,18 +51,8 @@ int drums[noOfDrumPrograms][noOfDrumOutputs][16] = {
   }
 };
 
-////////////////////////////////////////////////////////////////////////
-
-/* Lets define our inputs up here since we use them in various places below */
-const PinAnalogIn INPUT_TEMPO = DUE_IN_A00;
-const PinAnalogIn INPUT_PROGRAM = DUE_IN_A01;
-const PinAnalogIn INPUT_SUBTRACT = DUE_IN_A02;
-const PinAnalogIn INPUT_ADD = DUE_IN_A03;
-const PinAnalogIn INPUT_NOTE = DUE_IN_A04;
-
 /* Ardcore sketch used integers, so we'll use an array instead */
-PinDigitalOut outputs[noOfDrumOutputs] = 
-{ 
+PinDigitalOut outputs[noOfDrumOutputs] = { 
   DUE_OUT_D00, 
   DUE_OUT_D01, 
   DUE_OUT_D02, 
@@ -70,7 +60,6 @@ PinDigitalOut outputs[noOfDrumOutputs] =
   DUE_OUT_D04, 
   DUE_OUT_D05 
 };
-
 
 /* Use an array of 'gates' cause the off-on-off is too fast to see */
 /* Gates are devices that will turn off after a duration and are managed by the EventManager */
@@ -90,32 +79,30 @@ int column = 0;
 
 ////////////////////////////////////////////////////////////////////////
 
+/* Lets define our inputs up here since we use them in various places below */
+const PinAnalogIn INPUT_TEMPO = DUE_IN_A00;
+const PinAnalogIn INPUT_PROGRAM = DUE_IN_A01;
+const PinAnalogIn INPUT_SUBTRACT = DUE_IN_A02;
+const PinAnalogIn INPUT_ADD = DUE_IN_A03;
+
+const PinAnalogIn INPUT_SETTING = DUE_IN_A05;
+
+////////////////////////////////////////////////////////////////////////
+
+/* Keep a static reference to the sequencer so we can modify it outside of setup() */
+NoteSequencer* sequencer1;
+NoteSequencer* sequencer2;
+NoteSequencer* sequencer3;
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+
 void setup() 
 {
   Serial.begin(19200);
   EventManager::initialize();
-
-  // out1 = AnalogOut::create(DUE_SPI_4822_00);
-
-  Clock* democlock = VariableClock::create(25, 525, DUE_IN_A11, 16);
-
-  SequenceNote notelist[34] = { {1,1}, {1,3}, {1,5}, {1,1}, {1,3}, {1,5}, {1,1}, {1,5}, 
-                  {2,1}, {2,3}, {2,5}, {2,1}, {2,3}, {2,5}, {2,1}, {2,5}, 
-                  {3,1}, {3,3}, {3,5}, {3,1}, {3,3}, {3,5}, {3,1}, {3,5}, 
-                  {4,1}, {4,3}, {4,5}, {4,1}, {4,3}, {4,5}, {4,1}, {5,1} };
-
-  NoteSequenceData* notes = new NoteSequenceData(notelist, notelist + 34);
-
-  // CVNoteSequencer(notes, key, scale, output, input, randomize);
-  sequencer = CVNoteSequencer::create(notes, C, Key::SCALE_MINOR, DUE_SPI_4822_02, DUE_IN_A10);
-
-
-  sequencer->setgate(Gate::create(DUE_OUT_D15, 75));
- 
-  democlock->registerDevice(sequencer);
-  
-  EventManager::registerDevice(democlock);  
-  
   
   /* Intialize our six gates */
   for (int i = 0; i < noOfDrumOutputs; i++)
@@ -124,29 +111,57 @@ void setup()
     gates[i] = Gate::create(outputs[i], 10);
     EventManager::registerDevice(gates[i]);
   }
+
+////////////////////////////////////////////////////////////////////////
+
+  /* Set up the note data for the sequence */
+  SequenceNote notelist1[8] = { {1,1}, {1,4}, {1,1}, {1,5}, {1,1}, {1,4}, {1,1}, {1,5} };
+  SequenceNote notelist2[8] = { {1,1}, {1,4}, {1,1}, {1,5}, {1,1}, {1,4}, {1,1}, {1,5} };
+  SequenceNote notelist3[8] = { {1,1}, {1,4}, {1,1}, {1,5}, {1,1}, {1,4}, {1,1}, {1,5} };
+                
+  /* Add the raw array to a vector for easier transport */
+  NoteSequenceData* notes1 = new NoteSequenceData(notelist1, notelist1 + 8);
+  NoteSequenceData* notes2 = new NoteSequenceData(notelist2, notelist2 + 8);
+  NoteSequenceData* notes3 = new NoteSequenceData(notelist3, notelist3 + 8);
+
+  /* Build our note-based seuqnce */
+  sequencer1 = TriggerNoteSequencer::create(notes1, C, Key::SCALE_MAJOR, DUE_IN_D0, DUE_SPI_4822_15);
+  sequencer2 = TriggerNoteSequencer::create(notes2, C, Key::SCALE_MAJOR, DUE_IN_D0, DUE_SPI_4822_14);
+  sequencer3 = TriggerNoteSequencer::create(notes3, C, Key::SCALE_MAJOR, DUE_IN_D0, DUE_SPI_4822_13, false);
+
+  sequencer1->setgate(Gate::create(DUE_OUT_D00, 75));
+
+  EventManager::registerDevice(sequencer1);
+  EventManager::registerDevice(sequencer2);
+  EventManager::registerDevice(sequencer3);
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+
 }
 
 ////////////////////////////////////////////////////////////////////////
 
 void loop() {
 
-  if (EventManager::getT() % 10 == 0)
-  {
+  if (EventManager::getT() % 10 == 0) {
     /* AnalogReads are relatively expensive and slow, so only do them every 10ms */
-    int setting = analogReadmV(INPUT_NOTE);
+    int setting = analogReadmV(INPUT_SETTING);
     
-    if (setting > 2000) 
-    {
-      // sequencer->setKey(E);
+    if (setting > 2000) {
+      sequencer1->setKey(E);
+      sequencer2->setKey(E);
+      sequencer3->setKey(E);
     }
-    else
-    {
-      // sequencer->setKey(C);
+    else {
+      sequencer1->setKey(C);
+      sequencer2->setKey(C);
+      sequencer3->setKey(C);
     }
   }
   
-  // out1->outputCV(100 * noteOut);
-
   if (EventManager::getT() >= nexttime) {
     nexttime += 100 + ((5000 - analogReadmV(INPUT_TEMPO, 0, 5000)) / 20);   
             
