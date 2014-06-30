@@ -22,6 +22,24 @@ using namespace nw2s;
 
 ////////////////////////////////////////////////////////////////////////
 
+AnalogOut* out6 = AnalogOut::create(DUE_SPI_4822_06);
+
+/* Lets define our inputs up here since we use them in various places below */
+const PinAnalogIn INPUT_TEMPO =     DUE_IN_A00;
+const PinAnalogIn INPUT_PROGRAM =   DUE_IN_A02;
+const PinAnalogIn INPUT_SUBTRACT =  DUE_IN_A04;
+const PinAnalogIn INPUT_ADD =       DUE_IN_A06;
+ 
+const PinAnalogIn INPUT_CVSeq_1 =   DUE_IN_A01;
+const PinAnalogIn INPUT_CVSeq_2 =   DUE_IN_A03;
+const PinAnalogIn INPUT_CVSeq_3 =   DUE_IN_A05;
+
+// const PinAnalogIn INPUT_BASENOTE =  DUE_IN_A07;
+
+const PinAnalogIn INPUT_SETTING =   DUE_IN_A11;
+
+////////////////////////////////////////////////////////////////////////
+
 // drums [z][y][x]
 int const noOfDrumPrograms = 2;
 int const noOfDrumSteps = 6;
@@ -72,22 +90,6 @@ int anslagEveryOther[noOfDrumSteps] = { 1, 1, 1, 1, 1, 1 };
 /* Manage state for the transitions */
 int nexttime = 0; 
 int column = 0;
-
-////////////////////////////////////////////////////////////////////////
-
-/* Lets define our inputs up here since we use them in various places below */
-const PinAnalogIn INPUT_TEMPO = DUE_IN_A00;
-const PinAnalogIn INPUT_PROGRAM = DUE_IN_A02;
-const PinAnalogIn INPUT_SUBTRACT = DUE_IN_A04;
-const PinAnalogIn INPUT_ADD = DUE_IN_A06;
- 
-const PinAnalogIn INPUT_CVSeq_1 = DUE_IN_A01;
-const PinAnalogIn INPUT_CVSeq_2 = DUE_IN_A03;
-const PinAnalogIn INPUT_CVSeq_3 = DUE_IN_A05;
-
-const PinAnalogIn INPUT_BASENOTE = DUE_IN_A07;
-
-const PinAnalogIn INPUT_SETTING = DUE_IN_A11;
 
 ////////////////////////////////////////////////////////////////////////
 
@@ -158,7 +160,7 @@ void setup()
   NoteSequenceData* notes5 = new NoteSequenceData(notelist5, notelist5 + 8);
   NoteSequenceData* notes6 = new NoteSequenceData(notelist6, notelist6 + 8);
 
-  // CVNoteSequencer(                    notes, key, scale,           output,          input,    randomize);
+  // CVNoteSequencer(                    notes, key, scale,               output,          input,         randomize);
   CVsequencer1 = CVNoteSequencer::create(notes4, C, Key::SCALE_CHROMATIC, DUE_SPI_4822_00, INPUT_CVSeq_1);
   CVsequencer2 = CVNoteSequencer::create(notes5, C, Key::SCALE_CHROMATIC, DUE_SPI_4822_01, INPUT_CVSeq_2);
   CVsequencer3 = CVNoteSequencer::create(notes6, C, Key::SCALE_CHROMATIC, DUE_SPI_4822_02, INPUT_CVSeq_3);
@@ -188,22 +190,24 @@ void setup()
 
 void loop() {
 
-  int const noOfBaseNotes = 4;
-  int baseNote = analogReadmV(INPUT_BASENOTE, 0, 5000);
-  // Serial.println(baseNote);
+out6->outputCV(analogReadmV(DUE_IN_A07));
 
-  if (baseNote > 0 && baseNote < 399) {
-    CVsequencer1->setKey(C);
-    CVsequencer2->setKey(C);
-    CVsequencer3->setKey(C);
-    Serial.println("C");
-  }
-  if (baseNote > 400 && baseNote < 799) {
-    CVsequencer1->setKey(C_SHARP);
-    CVsequencer2->setKey(C_SHARP);
-    CVsequencer3->setKey(C_SHARP);
-    Serial.println("C_SHARP");
-  }
+  // int const noOfBaseNotes = 4;
+  // int baseNote = analogReadmV(INPUT_BASENOTE, 0, 5000);
+  // // Serial.println(baseNote);
+
+  // if (baseNote > 0 && baseNote < 399) {
+  //   CVsequencer1->setKey(C);
+  //   CVsequencer2->setKey(C);
+  //   CVsequencer3->setKey(C);
+  //   Serial.println("C");
+  // }
+  // if (baseNote > 400 && baseNote < 799) {
+  //   CVsequencer1->setKey(C_SHARP);
+  //   CVsequencer2->setKey(C_SHARP);
+  //   CVsequencer3->setKey(C_SHARP);
+  //   Serial.println("C_SHARP");
+  // }
   
 ////////////////////////////////////////////////////////////////////////
 
