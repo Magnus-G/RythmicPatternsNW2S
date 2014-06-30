@@ -1,0 +1,588 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"digit",
+				"digitalWrite	Arduino digitalWrite"
+			],
+			[
+				"gate",
+				"gateShouldOpenOnThisRow"
+			],
+			[
+				"no",
+				"noOfColumns"
+			],
+			[
+				"noO",
+				"noOfRows"
+			],
+			[
+				"ther",
+				"thereWillBeATrigger"
+			],
+			[
+				"od",
+				"oldY"
+			],
+			[
+				"ol",
+				"oldY"
+			],
+			[
+				"randV",
+				"randValuePatternJumpTarget"
+			],
+			[
+				"patter",
+				"patternPlace"
+			],
+			[
+				"subt",
+				"subtractTrigger"
+			],
+			[
+				"tim",
+				"timeBetweenClockIns"
+			],
+			[
+				"clock",
+				"clockInTime"
+			],
+			[
+				"ran",
+				"randValueTest"
+			],
+			[
+				"nex",
+				"nextStateForTrig"
+			],
+			[
+				"noOf",
+				"noOfColumns"
+			],
+			[
+				"trig",
+				"trigOrNot"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/Datorn/Documents/Arduino/b/sketches/libraries/nw2s/Key.h",
+			"settings":
+			{
+				"buffer_size": 38224,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"proc",
+				"Set Syntax: Processing"
+			],
+			[
+				"proce",
+				"Set Syntax: Processing"
+			],
+			[
+				"set proc",
+				"Set Syntax: Processing"
+			],
+			[
+				"high",
+				"HighlightWords: Highlight Words"
+			],
+			[
+				"pro",
+				"Set Syntax: Processing"
+			],
+			[
+				"set ar",
+				"Set Syntax: Arduino"
+			],
+			[
+				"process",
+				"Set Syntax: Processing"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"diff",
+				"FileDiffs: Menu"
+			],
+			[
+				"wo",
+				"HighlightWords: Highlight Words"
+			],
+			[
+				"w",
+				"HighlightWords: Unhighlight Words"
+			],
+			[
+				"hi",
+				"HighlightWords: Highlight Words"
+			],
+			[
+				"comme",
+				"Toggle Comment"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			],
+			[
+				"hight",
+				"HighlightWords: Highlight Words"
+			],
+			[
+				"word",
+				"WordHighlight: Toggle Enabled"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"set c",
+				"Set Syntax: C"
+			],
+			[
+				"te",
+				"Text Pastry: From N to X by M"
+			],
+			[
+				"text pa",
+				"Text Pastry: From N to X by M"
+			],
+			[
+				"repl",
+				"SublimeREPL: Clojure"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Datorn/Documents/Arduino/b/sketches/libraries/nw2s/Sequence.cpp",
+		"/Users/Datorn/Documents/Arduino/b/sketches/libraries/nw2s/Sequence.h",
+		"/Users/Datorn/Documents/Arduino/b/sketches/libraries/nw2s/Key.cpp",
+		"/Users/Datorn/Documents/Arduino/b/sketches/libraries/nw2s/Clock.cpp",
+		"/Users/Datorn/Documents/Arduino/RythmicPatterns/RythmicPatterns.ino",
+		"/Users/Datorn/Documents/Arduino/bMagnus/bMagnus.ino",
+		"/Users/Datorn/Documents/Arduino/RythmicPatternsNW2S/src/sketch.ino",
+		"/Users/Datorn/Documents/Arduino/RythmicPatternsNW2S/RythmicPatternsNW2S.ino",
+		"/Users/Datorn/Documents/Arduino/b-0.1.0/sketches/libraries/nw2s/IO.cpp",
+		"/Users/Datorn/Documents/Arduino/b-0.1.0/sketches/libraries/nw2s/EventManager.h",
+		"/Users/Datorn/Documents/Arduino/b-0.1.0/sketches/nw2s/bAlanesqueDemo/bAlanesqueDemo.ino",
+		"/Users/Datorn/Documents/Processing/Innan/Innan.pde",
+		"/Users/Datorn/Documents/Processing/Klockorna/Klockorna.pde",
+		"/Users/Datorn/Documents/Processing/ProcessingMp3Base/ProcessingMp3Base.pde",
+		"/Users/Datorn/Documents/Processing/ProcessingEurorackBase/ProcessingEurorackBase.pde",
+		"/Users/Datorn/Documents/Processing/Klockorna/klockorna-scrub.pde",
+		"/Users/Datorn/Documents/Processing/libraries/oscP5/examples/oscP5broadcastClient/oscP5broadcastClient.pde",
+		"/Users/Datorn/Documents/Arduino/RythmicPatterns/drumPatterns.h",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Drums_Clocked/variables.h",
+		"/Users/Datorn/Documents/Arduino/Ardcore/JustDrumsWithGates/JustDrumsWithGates.ino",
+		"/Users/Datorn/Documents/Arduino/Ardcore/JustDrumsWithGates/drumPatterns.h",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Drums_Clocked/Drums_Clocked.ino",
+		"/Users/Datorn/Documents/Arduino/RythmicPatterns/drumPatternList.h",
+		"/Users/Datorn/Documents/Arduino/RythmicPatterns/variables.h",
+		"/Users/Datorn/Documents/Arduino/Ardcore/JustDrums/JustDrums.ino",
+		"/Users/Datorn/Documents/Arduino/Ardcore/ChordMelodyPlayer/ChordMelodyPlayer.ino",
+		"/Users/Datorn/Documents/Processing/landscape/landscape.pde",
+		"/Users/Datorn/Documents/Processing/P-Innan/P-innan.pde",
+		"/Users/Datorn/Documents/Processing/RecordAudioInput/RecordAudioInput.pde",
+		"/Users/Datorn/Documents/Processing/ProcessingFirst/ProcessingFirst.pde",
+		"/Users/Datorn/Documents/Arduino/Eurorack/ChordMelodyPlayer/ChordMelodyPlayer.ino",
+		"/Users/Datorn/Documents/Processing/Processing-1/Processing-1.pde",
+		"/Users/Datorn/Documents/Arduino/StandardFirmata.ino",
+		"/Users/Datorn/Documents/Arduino/Ardcore_W_Processing_Firmata.pde",
+		"/Users/Datorn/Downloads/Ardcore_W_Processing_Firmata.pde",
+		"/Users/Datorn/Documents/Arduino/test/test.ino",
+		"/Users/Datorn/Documents/Processing/testprocess/testprocess.pde",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Others/AC09_TriggerDelay/AC09_TriggerDelay.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/ByteBeats/ByteBeatSwitch.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/ByteBeats/mg-accorian.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Others/BYTEBEAT...CV and AUDIO enjoy/mvValues_musc/mvValues_musc.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Others/BYTEBEAT...CV and AUDIO enjoy/drumsandmelody_2/drumsandmelody_2.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Others/BYTEBEAT...CV and AUDIO enjoy/french_friesWcv/french_friesWcv.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Others/BYTEBEAT...CV and AUDIO enjoy/fucking_techno/fucking_techno.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Others/BYTEBEAT...CV and AUDIO enjoy/accorian/accorian.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Others/BYTEBEAT...CV and AUDIO enjoy/CROWD_Make_compatible/CROWD_Make_compatible.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Others/BYTEBEAT...CV and AUDIO enjoy/delay_expeweriments/delay_byte1/delay_byte1.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Others/BYTEBEAT...CV and AUDIO enjoy/drumsandmelody/drumsandmelody.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Drums_Clocked/drumPatternList.h",
+		"/Users/Datorn/Documents/Arduino/Eurorack/ChordMelodyPlayer/variables.h",
+		"/Users/Datorn/Documents/Arduino/Eurorack/ChordMelodyPlayer/notes_and_patterns.h",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Drums_Clocked/ToDo",
+		"/Users/Datorn/Documents/Arduino/Eurorack/ChordMelodyPlayer/ToDo",
+		"/Users/Datorn/Documents/Arduino/Eurorack/JustDrumsWithGates/JustDrumsWithGates.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Drums_Clocked/setup.h",
+		"/Users/Datorn/Documents/Arduino/Eurorack/Drums_Clocked/drumPatterns.h",
+		"/Users/Datorn/Documents/Arduino/Eurorack/AC06_TrigToGate/AC06_TrigToGate.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/AC02_Quantizer/AC02_Quantizer.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/AC05_ClockDivide/AC05_ClockDivide.ino",
+		"/Users/Datorn/Documents/Arduino/Eurorack/AC16_TrigMultiplier/AC16_TrigMultiplier.ino",
+		"/Users/Datorn/Desktop/hej.c",
+		"/Users/Datorn/Library/Application Support/Sublime Text 3/Packages/SublimeREPL/SublimeREPL.sublime-settings",
+		"/Users/Datorn/Library/Application Support/Sublime Text 3/Packages/User/SublimeREPL.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"NoteName",
+			"this->key->setRootNote(key);",
+			"NoteName",
+			"setKey",
+			"char",
+			"NoteName",
+			"SequenceNote",
+			"NoteSequenceData",
+			"CVNoteSequencer",
+			"NoteSequenceData",
+			"CVNoteSequenceData",
+			"NoteSequenceData",
+			"slave",
+			"anslagEveryOther",
+			"00",
+			"hej",
+			"column",
+			"row",
+			"hej",
+			"noOfDrumPrograms",
+			"))",
+			"//////////////////////////////////////////////////////",
+			"////////////////////////////////////////////////////// ",
+			"left",
+			"10",
+			"height",
+			"void mouseReleased()\n  {\n    invert = false;\n  }\n  \n  // play is a boolean value used to determine what to draw on the button\n  void update()\n  {\n    if ( song.isPlaying() ) play = false;\n    else play = true;\n  }\n  \n  void draw()\n  {\n    if ( invert )\n    {\n      fill(255);\n      stroke(0);\n    }\n    else\n    {\n      noFill();\n      stroke(255);\n    }",
+			"Loops",
+			"loops",
+			"thisIsATrigger",
+			"-1",
+			"y",
+			"x",
+			"analogRead(0)",
+			"y-1",
+			"drumProgram",
+			"DrumProgram",
+			"drumProgram",
+			"analogRead(0)",
+			"analogRead(1)",
+			"analogRead(2)",
+			"Additions",
+			"analogRead(0)",
+			"analogRead(1)",
+			"-1",
+			"y",
+			"analogRead(2)",
+			"in.left.get(i)*300",
+			"////////",
+			"newValue",
+			"sixth",
+			"// deal with zero indexing on addressing the array vs the integer declared to set the number.",
+			"pauseCounterEndValue",
+			"1, 1, 1, 1, 1",
+			"// synchopation",
+			"hej",
+			"row",
+			"Additions",
+			"drumPatterns",
+			"drumPattern",
+			"everySecondTrig",
+			"1",
+			"[row]",
+			"[column]",
+			"[row]",
+			"0",
+			"+(y-1)",
+			"},",
+			"column",
+			"x",
+			"0",
+			"13"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/Datorn/Documents/Arduino/b/sketches/libraries/nw2s/Key.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 38224,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1005,
+								1005
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 128.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.AC02_Quantizer":
+	{
+		"height": 184.0
+	},
+	"output.AC05_ClockDivide":
+	{
+		"height": 70.0
+	},
+	"output.AC06_TrigToGate":
+	{
+		"height": 162.0
+	},
+	"output.AC09_TriggerDelay":
+	{
+		"height": 100.0
+	},
+	"output.AC16_TrigMultiplier":
+	{
+		"height": 111.0
+	},
+	"output.ADSR_ENV":
+	{
+		"height": 100.0
+	},
+	"output.Arduino":
+	{
+		"height": 94.0
+	},
+	"output.ByteBeats":
+	{
+		"height": 156.0
+	},
+	"output.CROWD_Make_compatible":
+	{
+		"height": 82.0
+	},
+	"output.ChordMelodyPlayer":
+	{
+		"height": 82.0
+	},
+	"output.Drums_Clocked":
+	{
+		"height": 146.0
+	},
+	"output.JustDrumsWithGates":
+	{
+		"height": 70.0
+	},
+	"output.Klockorna":
+	{
+		"height": 82.0
+	},
+	"output.ProcessingEurorackBase":
+	{
+		"height": 82.0
+	},
+	"output.RythmicPatterns":
+	{
+		"height": 88.0
+	},
+	"output.RythmicPatternsNW2S":
+	{
+		"height": 94.0
+	},
+	"output.accorian":
+	{
+		"height": 70.0
+	},
+	"output.bAlanesqueDemo":
+	{
+		"height": 70.0
+	},
+	"output.delay_byte1":
+	{
+		"height": 82.0
+	},
+	"output.drumsandmelody":
+	{
+		"height": 82.0
+	},
+	"output.drumsandmelody_2":
+	{
+		"height": 82.0
+	},
+	"output.exec":
+	{
+		"height": 91.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.french_friesWcv":
+	{
+		"height": 82.0
+	},
+	"output.fucking_techno":
+	{
+		"height": 82.0
+	},
+	"output.mvValues_musc":
+	{
+		"height": 82.0
+	},
+	"output.stino_log":
+	{
+		"height": 100.0
+	},
+	"output.test":
+	{
+		"height": 94.0
+	},
+	"project": "nw2s-libraries.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 179.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
